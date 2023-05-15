@@ -1,0 +1,9 @@
+﻿  main.cpp
+c:\users\david\source\repos\rsu\rsu\main.cpp(298): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\david\source\repos\rsu\rsu\main.cpp(310): error C4996: 'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\string.h(132): note:  см. объявление "strcpy"
+c:\users\david\source\repos\rsu\rsu\main.cpp(559): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
+c:\users\david\source\repos\rsu\rsu\main.cpp(1181): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\david\source\repos\rsu\rsu\main.cpp(1190): warning C4018: <: несоответствие типов со знаком и без знака
+c:\users\david\source\repos\rsu\rsu\main.cpp(1617): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
+c:\users\david\source\repos\rsu\rsu\main.cpp(1615): warning C4390: ";": обнаружен пустой контролируемый оператор; это правильно?
