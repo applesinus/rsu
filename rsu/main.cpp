@@ -4,6 +4,14 @@
 #include <array>
 #include <cctype>
 #include <fstream>
+#include <new>
+//Chapter 9
+#include "golf.h"
+#include "sales.h"
+// Chapters 10-XX
+#include "Chapter10.h"
+#include "Chapter11.h"
+#include "Chapter12.h"
 
 using namespace std;
 
@@ -263,6 +271,7 @@ void calculate(double x, double y, double(*pf[])(double, double), int n)
 
 
 // chapter 8
+
 // task 1
 void show81(const char *str, int n=0)
 {
@@ -364,6 +373,54 @@ struct debts
 	char name[50];
 	double amount;
 };
+
+
+// chapter 9
+
+//task 2
+void strcount(const string str)
+{
+	using namespace std;
+	static int total = 0;
+	int count = str.length();
+	cout << "\"" << str << "\" contains ";
+	total += count;
+	cout << count << " characters\n";
+	cout << total << " characters total\n";
+	return;
+}
+//task 3
+struct chaff
+{
+	char dross[20];
+	int slag;
+};
+
+
+// chapter 10
+
+// task 8
+void sqr(double& y) { y *= y; }
+
+
+// chapter 11
+
+// task 5
+void display(const Stonewt& st, int n)
+{
+	for (int i = 0; i < n; i++)
+		cout << "Wow! " << st;
+}
+
+
+// chapter 12
+
+// task 5
+bool newcustomer(double x)
+{
+	return (rand() * x / RAND_MAX < 1);
+}
+
 
 
 int main()
@@ -1428,7 +1485,9 @@ int main()
 						case 'I': case 'i':	case 'U': case 'u':
 						case 'Y': case 'y':	case 'O': case 'o':
 							vowels++; break;
-						default: consonants++;
+						default:
+							consonants++;
+							break;
 						}
 					}
 					else
@@ -1947,6 +2006,982 @@ int main()
 
 			break;
 		}
+
+		case 9: // CHAPTER 9
+		{
+			cout << "\n============== CHAPTER 9 ==============\n\n";
+			cout << "List of tasks:\n\t1. Golf again.\n\t2. Listing 9.9 with string.\n\t3. Struct chaff.\n\t4. Namespace SALES.\n";
+			cout << "=======================================\n\n";
+			cout << "Enter task number: ";
+			cin >> input;
+			cout << endl;
+
+			switch (input) {
+
+			case -1:
+			{
+				cout << "Choose the chapter!\n";
+				break;
+			}
+
+			case 1: // ch9 task 1
+			{
+				golf ann;
+				setgolf(ann, "Ann Smith", 18);
+				showgolf(ann);
+				handicap(ann, 20);
+				showgolf(ann);
+				golf arr[5];
+				int playerCounter = 0;
+				char none[1];
+				cin.getline(none, 1);
+				while (playerCounter < 5 && setgolf(arr[playerCounter]))
+				{
+					playerCounter++;
+				}
+				for (int i = 0; i < playerCounter; i++)
+				{
+					showgolf(arr[i]);
+				}
+
+				break;
+			}
+
+			case 2: // ch9 task 2
+			{
+				cin.ignore();
+
+				string input;
+				cout << "Enter a line: \n";
+				while (getline(cin, input) && input != "")
+				{
+					strcount(input);
+					cout << "Enter next line (empty line to quit):\n";
+				}
+				cout << "Bye\n";
+
+				break;
+			}
+
+			case 3: // ch9 task 3
+			{
+				cin.ignore();
+
+				cout << "Choose an option (1 or 2, -1 to break): ";
+				int option = -1;
+				cin >> option;
+
+				while (option != -1) {
+					switch (option)
+					{
+					case 1:
+					{
+						char buffer[2 * sizeof(chaff)];
+						chaff* chaff1 = new (buffer) chaff[2];
+						strcpy_s(chaff1[0].dross, "part1_1");
+						chaff1[0].slag = 1;
+						strcpy_s(chaff1[1].dross, "part1_2");
+						chaff1[1].slag = 2;
+
+						for (int i = 0; i < 2; i++) {
+							cout << "Chaff.\nDross: " << chaff1[i].dross << ", Slag: " << chaff1[i].slag << endl;
+						}
+
+						break;
+					}
+
+					case 2:
+					{
+						chaff* chaff2 = new chaff[2];
+						strcpy_s(chaff2[0].dross, "part2_1");
+						chaff2[0].slag = 100;
+						strcpy_s(chaff2[1].dross, "part2_2");
+						chaff2[1].slag = 200;
+
+						for (int i = 0; i < 2; i++) {
+							cout << "Chaff:\nDross: " << chaff2[i].dross << ", Slag: " << chaff2[i].slag << endl;
+						}
+						delete[]chaff2;
+
+						break;
+					}
+
+					default:
+						break;
+					}
+
+					cout << "\nChoose an option (1 or 2. -1 to break): ";
+					cin >> option;
+				}
+
+				break;
+			}
+
+			case 4: // ch9 task 4
+			{
+				using namespace SALES;
+				cin.ignore();
+
+				Sales sail1;
+				setSales(sail1);
+				showSales(sail1);
+				double ar[3] = { 120.2, 302.5, 177.3 };
+				Sales sail2;
+				setSales(sail2, ar, 3);
+				showSales(sail2);
+
+				break;
+			}
+
+
+			default:
+			{
+				cout << "Unfortunatelly here is no such task. Yet :)\n";
+				break;
+			}
+
+			}
+			break;
+		}
+
+
+		case 10: // CHAPTER 10
+		{
+			cout << "\n============== CHAPTER 10 ==============\n\n";
+			cout << "List of tasks:\n\t1. Bank account.\n\t2. Class Person.\n\t3. Golf again. Again.\n\t4. Namespace SALES. Again.\n";
+			cout << "\t5. Struct customer.\n\t6. Class Move.\n\t7. Plorg.\n\t8. Class List.\n";
+			cout << "=======================================\n\n";
+			cout << "Enter task number: ";
+			cin >> input;
+			cout << endl;
+
+			switch (input) {
+
+			case -1:
+			{
+				cout << "Choose the chapter!\n";
+				break;
+			}
+
+
+			case 1: // ch10 task 1
+			{
+				cin.ignore();
+
+				BankAccount test{ "Client", "Wallet" };
+				test.show();
+				test.deposit(500);
+				test.show();
+				test.withdraw(100);
+				test.show();
+
+				break;
+			}
+
+			case 2: // ch10 task 2
+			{
+				cin.ignore();
+
+				Person one;
+				Person two("Dmitry");
+				Person three("Rosin", "Dmitry");
+				one.Show();
+				one.FormalShow();
+				cout << endl;
+				two.Show();
+				two.FormalShow();
+				cout << endl;
+				three.Show();
+				three.FormalShow();
+
+				break;
+			}
+
+			case 3: // ch10 task 3
+			{
+				cin.ignore();
+
+				Golf ann{ "Ann Birdfree", 24 };
+				ann.showgolf();
+				ann.sethandicap(30);
+				ann.showgolf();
+				Golf arr[3];
+				int player = 0;
+				while (player < 3 && arr[player].setgolf())
+					player++;
+				for (int i = 0; i < player; i++)
+					arr[i].showgolf();
+
+				break;
+			}
+
+			case 4: // ch10 task 4
+			{
+				cin.ignore();
+
+				using namespace SALES10;
+
+				Sales sal1;
+				sal1.setSales();
+				sal1.showSales();
+				double ar[3] = { 120.2, 302.5, 177.3 };
+				Sales sal2(ar, 3);
+				sal2.showSales();
+
+				break;
+			}
+
+			case 5: // ch10 task 5
+			{
+				cin.ignore();
+
+				Stack st;
+				char ch;
+				double total = 0;
+				customer po;
+				cout << "Please enter A to add customer, P to pop last customer, or Q to quit: ";
+				while (cin >> ch && toupper(ch) != 'Q')
+				{
+					while (cin.get() != '\n')
+						continue;
+					if (!isalpha(ch))
+					{
+						cout << '\a';
+						continue;
+					}
+
+					switch (ch)
+					{
+					case 'A':
+					case 'a':
+						cout << "Enter full name: ";
+						cin.get(po.fullname, 35);
+						while (cin.get() != '\n') {
+							continue;
+						}
+						cout << "Enter payment amount: ";
+						cin >> po.payment;
+						if (st.isfull()) {
+							cout << "stack is already full\n";
+						}
+						else {
+							st.push(po);
+						}
+						break;
+					case 'P':
+					case 'p':
+						if (st.isempty()) {
+							cout << "stack is already empty\n";
+						}
+						else {
+						st.pop(po);
+						cout << "Receipt #" << (total += po.payment) << " popped\n";
+						}
+						break;
+					}
+					cout << "\nPlease enter A to add customer, P to pop last customer, or Q to quit: ";
+				}
+
+				break;
+			}
+
+			case 6: // ch10 task 6
+			{
+				cin.ignore();
+
+				Move subject1(7, 14);
+				Move subject2(100.3, 34.7);
+				subject1.showmove();
+				subject2.showmove();
+				Move subject3 = subject1.add(subject2);
+				subject3.showmove();
+				subject3.reset();
+				subject3.showmove();
+
+				break;
+			}
+
+			case 7: // ch10 task 7
+			{
+				cin.ignore();
+
+				Plorg plorg1;
+				plorg1.show();
+				Plorg plorg2("Avatar", 37);
+				plorg2.show();
+				plorg2.changeCI(77);
+				plorg2.show();
+
+				break;
+			}
+
+			case 8: // ch10 task 8
+			{
+				cin.ignore();
+
+				List lst;
+				double tmp;
+				int counter = 1;
+				cout << "Enter a number #" << counter << ": ";
+				while (cin >> tmp)
+				{
+					lst.add(tmp);
+					if (lst.isfull()) break;
+					counter++;
+					cout << "Enter a number #" << counter << ": ";
+				}
+				lst.show();
+				lst.visit(sqr);
+				lst.show();
+
+				break;
+			}
+
+
+			default:
+			{
+				cout << "Unfortunatelly here is no such task. Yet :)\n";
+				break;
+			}
+
+			}
+			break;
+		}
+
+
+		case 11: // CHAPTER 11
+		{
+			cout << "\n============== CHAPTER 11 ==============\n\n";
+			cout << "List of tasks:\n\t1. Vector 1.\n\t2. Vector 2.\n\t3. Vector 3.\n\t4. Class Time.\n";
+			cout << "\t5. Stonewt 1.\n\t6. Stonewt 2.\n\t7. Complex number.\n";
+			cout << "=======================================\n\n";
+			cout << "Enter task number: ";
+			cin >> input;
+			cout << endl;
+
+			switch (input) {
+
+			case -1:
+			{
+				cout << "Choose the chapter!\n";
+				break;
+			}
+
+
+			case 1: // ch11 task 1
+			{
+				cin.ignore();
+
+				using namespace std;
+				using VECTOR::Vector;
+				ofstream fout;
+				fout.open("vect_log.txt");
+				srand(time(0));
+				double direction;
+				Vector step;
+				Vector result(0.0, 0.0);
+				unsigned long steps = 0;
+				double target;
+				double dstep;
+				cout << "Enter target distance (q to quit): ";
+				while (cin >> target)
+				{
+					cout << "Enter step length: ";
+					if (!(cin >> dstep))
+						break;
+					fout << "Target Distance: " << target << ", "
+						<< "Step Size: " << dstep << endl;
+					while (result.magval() < target)
+					{
+						fout << steps << ": " << result << endl;
+						direction = rand() % 360;
+						step.reset(dstep, direction, Vector::POL);
+						result = result + step;
+						steps++;
+					}
+					fout << "After " << steps << " steps, the subject "
+						"has the following location:\n" << result << endl;
+
+					cout << "After " << steps << " steps, the subject "
+						"has the following location:\n" << result << endl;
+					result.polar_mode();
+
+					fout << " or\n" << result << endl;
+					fout << "Average outward distance per step = "
+						<< result.magval() / steps << endl;
+
+					cout << " or\n" << result << endl;
+					cout << "Average outward distance per step = "
+						<< result.magval() / steps << endl;
+					steps = 0;
+					result.reset(0.0, 0.0);
+					cout << "Enter target distance (q to quit): ";
+				}
+				fout.close();
+				cout << "Bye!\n";
+				cin.clear();
+				while (cin.get() != '\n')
+					continue;
+
+				break;
+			}
+
+
+			case 2: // ch11 task 2
+			{
+				cin.ignore();
+
+				using VECTOR02::Vector;
+				srand(time(0));
+				double direction;
+				Vector step;
+				Vector result(0.0, 0.0);
+				unsigned long steps = 0;
+				double target;
+				double dstep;
+				cout << "Enter target distance (q to quit): ";
+				while (cin >> target)
+				{
+					cout << "Enter step length: ";
+					if (!(cin >> dstep))
+						break;
+					while (result.magval() < target)
+					{
+						direction = rand() % 360;
+						step.reset(dstep, direction, Vector::POL);
+						result = result + step;
+						steps++;
+					}
+					cout << "After " << steps << " steps, the subject "
+						"has the following location:\n";
+					cout << result << endl;
+					result.polar_mode();
+					cout << " or\n" << result << endl;
+					cout << "Average outward distance per step = "
+						<< result.magval() / steps << endl;
+					steps = 0;
+					result.reset(0.0, 0.0);
+					cout << "Enter target distance (q to quit): ";
+				}
+				cout << "Bye!\n";
+				cin.clear();
+				while (cin.get() != '\n')
+					continue;
+
+				break;
+			}
+
+
+			case 3: // ch11 task 3
+			{
+				cin.ignore();
+
+				using VECTOR03::Vector;
+				srand(time(0));
+				double direction, target, dstep;
+				Vector step;
+				Vector result(0.0, 0.0);
+				unsigned long steps = 0;
+				unsigned long min, max, total;
+				int trials;
+				cout << "Enter target distance (q to quit): ";
+				while (cin >> target)
+				{
+					cout << "Enter step length: ";
+					if (!(cin >> dstep))
+						break;
+					cout << "Enter trials: ";
+					if (!(cin >> trials))
+						break;
+					total = 0;
+					for (int i = 0; i < trials; i++)
+					{
+						while (result.magval() < target)
+						{
+							direction = rand() % 360;
+							step.reset(dstep, direction, Vector::POL);
+							result = result + step;
+							steps++;
+						}
+						total += steps;
+						if (i == 0) min = max = steps;
+						if (min > steps) min = steps;
+						if (max < steps) max = steps;
+						steps = 0;
+						result.reset(0.0, 0.0);
+					}
+					cout << "The highest, lowest, and average number of steps for "
+						<< trials << " trials:\n";
+					cout << " Highest: " << max << "\n Lowest : " << min
+						<< "\n Average: " << total / trials << endl;
+					cout << "Enter target distance (q to quit): ";
+				}
+				cout << "Bye!\n";
+				cin.clear();
+				while (cin.get() != '\n')
+					continue;
+
+				break;
+			}
+
+
+			case 4: // ch11 task 4
+			{
+				cin.ignore();
+
+				Time aida(3, 35);
+				Time tosca(2, 48);
+				Time temp;
+				Time temp2;
+				cout << "Aida and Tosca:\n";
+				cout << aida << "; " << tosca << endl;
+				temp = aida + tosca;
+				cout << "Aida + Tosca: " << temp << endl;
+				temp2 = aida - tosca;
+				cout << "Aida - Tosca: " << temp2 << endl;
+				temp = aida * 1.17;
+				cout << "Aida * 1.17: " << temp << endl;
+				cout << "10.0 * Tosca: " << 10.0 * tosca << endl;
+
+				break;
+			}
+
+
+			case 5: // ch11 task 5
+			{
+				cin.ignore();
+
+				Stonewt incognito = 275;
+				Stonewt wolfe(285.7);
+				Stonewt taft(21, 8);
+				cout << "The celebrity weighed " << incognito;
+				cout << "The detective weighed " << wolfe;
+				cout << "The President weighed " << taft;
+				incognito = 276.8;
+				taft = 325;
+				cout << "After dinner, the celebrity weighed " << taft;
+				cout << "Celebrity + Detective: " << incognito + wolfe;
+				cout << "President - Detective: " << taft - wolfe;
+				cout << "Detective * 5: " << wolfe * 5;
+				cout << "3 * Celebrity: " << 3 * incognito;
+				incognito.setStnMode();
+				cout << "Celebrity Stone mode: " << incognito;
+				incognito.setIntMode();
+				cout << "Celebrity Int mode: " << incognito;
+				incognito.setFloatMode();
+				cout << "Celebrity Float mode: " << incognito;
+				display(taft, 2);
+				cout << "The wrestler weighed even more.\n";
+				display(422, 2);
+				cout << "No stone left unearned\n";
+
+				break;
+			}
+
+
+			case 6: // ch11 task 6
+			{
+				cin.ignore();
+
+				const int SIZE = 6;
+				Stonewt06 arr[SIZE] = { 141, 275, 7 };
+				Stonewt06 s11(11);
+				int min, max, count;
+				double pounds;
+				for (int i = 3; i < SIZE; i++)
+				{
+					cout << "Enter pound: ";
+					cin >> pounds;
+					arr[i] = pounds;
+				}
+				min = max = count = 0;
+				for (int i = 0; i < SIZE; i++)
+				{
+					if (arr[min] > arr[i]) min = i;
+					if (arr[max] < arr[i]) max = i;
+					if (arr[i] >= s11) count++;
+				}
+				cout << "The objects >= 11 pounds: " << count << "\n";
+				cout << "Max object: ";
+				arr[max].show_lbs();
+				cout << "Min object: ";
+				arr[min].show_lbs();
+
+				break;
+			}
+
+
+			case 7: // ch11 task 7
+			{
+				cin.ignore();
+
+				Complex a(3.0, 4.0);
+				Complex c;
+				cout << "Enter a complex number (-1, -1i to quit):\n";
+				while (cin >> c)
+				{
+					cout << "c is " << c << '\n';
+					cout << "complex cojugate is " << ~c << '\n';
+					cout << "a is " << a << '\n';
+					cout << "a + c is " << a + c << '\n';
+					cout << "a - c is " << a - c << '\n';
+					cout << "a * c is " << a * c << '\n';
+					cout << "2 * c is " << 2 * c << '\n';
+					cout << "Enter a complex number (-1, -1i to quit):\n";
+
+					if (c.cA == -1 && c.cB == -1) {
+						break;
+					}
+				}
+				cout << "Done!\n";
+
+				break;
+			}
+
+
+			default:
+			{
+				cout << "Unfortunatelly here is no such task. Yet :)\n";
+				break;
+			}
+
+			}
+			break;
+		}
+
+
+		case 12: // CHAPTER 12
+		{
+			cout << "\n============== CHAPTER 12 ==============\n\n";
+			cout << "List of tasks:\n\t1. Vector 1.\n\t2. Vector 2.\n\t3. Vector 3.\n\t4. Class Time.\n";
+			cout << "\t5. Stonewt 1.\n\t6. Stonewt 2.\n\t7. Complex number.\n";
+			cout << "=======================================\n\n";
+			cout << "Enter task number: ";
+			cin >> input;
+			cout << endl;
+
+			switch (input) {
+
+			case -1:
+			{
+				cout << "Choose the chapter!\n";
+				break;
+			}
+
+
+			case 1: // ch12 task 1
+			{
+				cin.ignore();
+
+				Cow bob, obo("Bob", "Obo", 100), oboCopy(obo);
+				cout << "\nInfo1:" << bob << "\nInfo2:" << obo << "\nInfo3:" << oboCopy << endl;
+				bob = obo;
+				cout << "\nInfo1:" << bob << "\nInfo2:" << obo << endl;
+
+				break;
+			}
+
+
+			case 2: // ch12 task 2
+			{
+				cin.ignore();
+
+				String s1(" and I am a C++ student.");
+				String s2 = "Please enter your name: ";
+				String s3;
+				cout << s2;
+				cin >> s3;
+				s2 = "My name is " + s3;
+				cout << s2 << ".\n";
+				s2 = s2 + s1;
+				s2.stringup();
+				cout << "The string\n" << s2 << "\ncontains " << s2.has('A')
+					<< " 'A' characters in it.\n";
+				s1 = "red"; 
+
+				String rgb[3] = { String(s1), String("green"), String("blue") };
+				cout << "Enter the name of a primary color for mixing light: ";
+				String ans;
+				bool success = false;
+				while (cin >> ans)
+				{
+					ans.stringlow();
+					for (int i = 0; i < 3; i++)
+					{
+						if (ans == rgb[i]) 
+						{
+							cout << "That's right!\n";
+							success = true;
+							break;
+						}
+					}
+					if (success)
+						break;
+					else
+						cout << "Try again!\n";
+				}
+
+				break;
+			}
+
+
+			case 3: // ch12 task 3
+			{
+			cin.ignore();
+
+			Stock stocks[4] = {
+				Stock("NanoSmart", 12, 20.0),
+				Stock("Boffo Objects", 200, 2.0),
+				Stock("Monolithic Obelisks", 130, 3.25),
+				Stock("Fleep Enterprises", 60, 6.5)
+				};
+
+				cout << "Stock holdings:\n";
+				int st;
+				for (st = 0; st < 4; st++) {
+					cout << stocks[st];
+				}
+				const Stock* top = &stocks[0];
+				for (st = 1; st < 4; st++) {
+					top = &top->topval(stocks[st]);
+				}
+				cout << "\nMost valuable holding:\n";
+				cout << *top;
+
+				break;
+			}
+
+
+			case 4: // ch12 task 4
+			{
+				cin.ignore();
+
+				Stack12 st;
+				char ch;
+				unsigned long po;
+				cout << "Please enter A to add customer, P to pop last customer, or Q to quit: ";
+				while (cin >> ch && toupper(ch) != 'Q')
+				{
+					while (cin.get() != '\n')
+						continue;
+					if (!isalpha(ch))
+					{
+						cout << '\a';
+						continue;
+					}
+					switch (ch)
+					{
+					case 'A':
+					case 'a': cout << "Enter payment amount: ";
+						cin >> po;
+						if (st.isfull())
+							cout << "stack is already full\n";
+						else
+							st.push(po);
+						break;
+					case 'P':
+					case 'p': if (st.isempty())
+						cout << "stack is already empty\n";
+							else {
+						st.pop(po);
+						cout << "Receipt #" << po << " popped\n";
+					}
+							break;
+					}
+					cout << "Please enter A to add customer, P to pop last customer, or Q to quit: ";
+				}
+
+				break;
+			}
+
+
+			case 5: // ch12 task 5
+			{
+				cin.ignore();
+
+				srand(time(0));
+
+				cout << "Case Study: Bank of Heather Automatic Teller\n";
+				cout << "Enter maximum size of queue: ";
+				int qs;
+				cin >> qs;
+
+				cout << "Enter the number of simulation hours: ";
+				int hours;      
+				cin >> hours;
+
+				long cyclelimit = 60 * hours;
+
+
+				cout << "The average number of customers per hour: ";
+				double perhour = 1;   
+				double average_wait_time = 0; 
+				for (; true; ++perhour) {
+					Queue line(qs);     
+					double min_per_cust;  
+					min_per_cust = 60 / perhour;
+
+					Item122 temp;      
+					long turnaways = 0;    
+					long customers = 0;  
+					long served = 0;     
+					long sum_line = 0;  
+					int wait_time = 0;    
+					long line_wait = 0;    
+
+
+					for (int cycle = 0; cycle < cyclelimit; cycle++)
+					{
+						if (newcustomer(min_per_cust)) 
+						{
+							if (line.isfull())
+								turnaways++;
+							else
+							{
+								customers++;
+								temp.set(cycle);
+								line.enqueue(temp);
+							}
+						}
+						if (wait_time <= 0 && !line.isempty())
+						{
+							line.dequeue(temp); 
+							wait_time = temp.ptime();
+							line_wait += cycle - temp.when();
+							served++;
+						}
+						if (wait_time > 0)
+							wait_time--;
+						sum_line += line.queuecount();
+					}
+
+					average_wait_time = (double)line_wait / served;
+					if (0.99 < average_wait_time and 1.99 > average_wait_time) {
+						cout << "Average number of customers per hour, which leads to an average waiting time of one minute: " << perhour
+							<< " persons\n";
+						break;
+					}
+					else
+						cout << "\n" << perhour << " customers per hour, waiting time: " << average_wait_time << " minutes\n";
+				}
+
+				break;
+			}
+
+
+			case 6: // ch12 task 6
+			{
+				cin.ignore();
+
+				srand(time(0));  
+
+				cout << "Case Study: Bank of Heather Automatic Teller\n";
+				cout << "Enter maximum size of queue: ";
+				int qs;
+				cin >> qs;
+
+				cout << "Enter the number of simulation hours: ";
+				int hours;      
+				cin >> hours;
+
+				long cyclelimit = 60 * hours;
+
+
+				cout << "The average number of customers per hour: ";
+				double perhour = 1;
+				double average_wait_time = 0; 
+				for (; true; ++perhour) {
+					Queue line(qs), line2(qs);  
+
+					double min_per_cust; 
+					min_per_cust = 60 / perhour;
+
+					Item122 temp;           
+					Item122 temp2;      
+					long turnaways = 0;  
+					long customers = 0;   
+					long served = 0;      
+					long sum_line = 0;  
+					int wait_time = 0;   
+					int wait_time2 = 0;   
+					long line_wait = 0;     
+
+
+										
+
+					Queue* pLineNow = nullptr;
+					Item122* pTempNow = nullptr;
+
+					for (int cycle = 0; cycle < cyclelimit; cycle++)
+					{
+						if (line.queuecount() < line2.queuecount()) { 
+							pLineNow = &line; 
+							pTempNow = &temp; 
+						}
+						else {
+							pLineNow = &line2;
+							pTempNow = &temp2;
+						}
+
+						if (newcustomer(min_per_cust)) 
+						{
+							if (line.isfull() and line2.isfull())
+								turnaways++;
+							else
+							{
+								customers++;
+								pTempNow->set(cycle); 
+								pLineNow->enqueue(*pTempNow);
+							}
+						}
+
+						if (wait_time <= 0 && !line.isempty()) 
+						{
+							line.dequeue(temp); 
+							wait_time = temp.ptime(); 
+							line_wait += cycle - temp.when();
+							served++;
+						}
+						if (wait_time > 0)
+							wait_time--;
+
+						if (wait_time2 <= 0 && !line2.isempty())
+						{
+							line2.dequeue(temp2); 
+							wait_time2 = temp2.ptime(); 
+							line_wait += cycle - temp2.when();
+							served++;
+						}
+						if (wait_time2 > 0)
+							wait_time2--;
+
+						sum_line += line.queuecount() + line2.queuecount();
+					}
+
+					average_wait_time = (double)line_wait / served;
+					if (0.99 < average_wait_time and 1.99 > average_wait_time) {
+						cout << "Average number of customers per hour, which leads to an average waiting time of one minute: "
+							<< perhour << " persons\n";
+						break;
+					}
+					else
+						cout << "\n" << perhour << " customers per hour, waiting time: " << average_wait_time << " minutes\n";
+				} 
+
+				break;
+			}
+
+
+			default:
+			{
+				cout << "Unfortunatelly here is no such task. Yet :)\n";
+				break;
+			}
+
+			}
+			break;
+		}
+
 
 
 		default:

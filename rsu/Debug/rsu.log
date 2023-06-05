@@ -1,11 +1,18 @@
-﻿  main.cpp
-E:\cppProjects\rsu\rsu\main.cpp(298,20): warning C4018: <: несоответствие типов со знаком и без знака
-E:\cppProjects\rsu\rsu\main.cpp(559,52): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
-E:\cppProjects\rsu\rsu\main.cpp(1182,23): warning C4018: <: несоответствие типов со знаком и без знака
-E:\cppProjects\rsu\rsu\main.cpp(1191,25): warning C4018: <: несоответствие типов со знаком и без знака
-E:\cppProjects\rsu\rsu\main.cpp(1618,63): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
-E:\cppProjects\rsu\rsu\main.cpp(1618,56): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
-E:\cppProjects\rsu\rsu\main.cpp(1618,93): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
-E:\cppProjects\rsu\rsu\main.cpp(1618,86): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
-E:\cppProjects\rsu\rsu\main.cpp(1616,56): warning C4390: ";": обнаружен пустой контролируемый оператор; это правильно?
+﻿  Chapter12.cpp
+  main.cpp
+E:\cppProjects\rsu\rsu\main.cpp(307,20): warning C4018: <: несоответствие типов со знаком и без знака
+E:\cppProjects\rsu\rsu\main.cpp(616,52): warning C4244: =: преобразование "__int64" в "int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(1239,23): warning C4018: <: несоответствие типов со знаком и без знака
+E:\cppProjects\rsu\rsu\main.cpp(1248,25): warning C4018: <: несоответствие типов со знаком и без знака
+E:\cppProjects\rsu\rsu\main.cpp(1677,63): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(1677,56): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(1677,93): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(1677,86): warning C4244: аргумент: преобразование "double" в "unsigned int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(2379,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(2435,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(2480,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(2802,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(2877,15): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+E:\cppProjects\rsu\rsu\main.cpp(1675,56): warning C4390: ";": обнаружен пустой контролируемый оператор; это правильно?
+  Создание кода...
   rsu.vcxproj -> E:\cppProjects\rsu\Debug\rsu.exe

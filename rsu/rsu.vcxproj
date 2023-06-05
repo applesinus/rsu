@@ -115,7 +115,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Chapter10.cpp" />
+    <ClCompile Include="Chapter11.cpp" />
+    <ClCompile Include="Chapter12.cpp" />
+    <ClCompile Include="golf.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="sales.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Chapter10.h" />
+    <ClInclude Include="Chapter11.h" />
+    <ClInclude Include="Chapter12.h" />
+    <ClInclude Include="golf.h" />
+    <ClInclude Include="sales.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
